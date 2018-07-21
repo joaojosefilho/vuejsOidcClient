@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Silent Renew Token for SpeEDI Cargo</title>
+</head>
+<body>
+    <script src='oidc-client.js'></script>
+    <script>        
+        console.log('trying to renew the acess_token')
+        new Oidc.UserManager().signinSilentCallback();
+    </script>
+</body>
+</html>
