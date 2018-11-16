@@ -9,7 +9,11 @@
 <body>
   <script src="oidc-client.js"></script>
   <script>
-    var mgr = new Oidc.UserManager({userStore: new Oidc.WebStorageStateStore()});
+
+    //var mgr = new Oidc.UserManager({userStore: new Oidc.WebStorageStateStore()});
+    var mgr = new Oidc.UserManager({userStore: new Oidc.WebStorageStateStore(), loadUserInfo: true});
+
+    console.log("Callback:" + mgr)
     
     mgr.signinRedirectCallback().then(function (user) {
       window.location.href = '../index.html';

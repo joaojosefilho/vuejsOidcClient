@@ -1,8 +1,8 @@
 import Oidc from 'oidc-client';
 
 var mgr = new Oidc.UserManager({
-  //userStore: new Oidc.WebStorageStateStore(),
-  userStore: new Oidc.WebStorageStateStore({ store: window.localStorage }),
+  userStore: new Oidc.WebStorageStateStore(),
+  //userStore: new Oidc.WebStorageStateStore({ store: window.localStorage }),
   authority: 'https://localhost:44321',
   client_id: 'vuejsclient',
   redirect_uri: 'http://localhost:8080/static/callback.html',
@@ -15,6 +15,9 @@ var mgr = new Oidc.UserManager({
   filterProtocolClaims: true,
   loadUserInfo: true
 })
+
+console.log("Security Service MGR:" + mgr)
+
 
 Oidc.Log.logger = console;
 Oidc.Log.level = Oidc.Log.INFO;
