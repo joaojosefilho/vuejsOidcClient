@@ -1,23 +1,20 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+/* eslint-disable */
 import Vue from 'vue'
-import App from './App'
 import router from './router'
-import BootstrapVue from 'bootstrap-vue'
+import App from './App'
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'assets/css/app.styl'
 import VueRouter from 'vue-router';
-import Mgr from '@/services/SecurityService';
+import Mgr from './services/SecurityService';
 
-Vue.config.productionTip = false
-Vue.use(BootstrapVue);
 Vue.use(VueRouter);
-let mgr = new Mgr();    
+let mgr = new Mgr();
 
-/* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
-  components: { App },
-  template: '<App/>'
+  render: h => h(App)
 })
 
 router.beforeEach((to, from, next) => {

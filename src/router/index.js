@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import PayingUser from '@/components/PayingUser'
-import FreeUser from '@/components/FreeUser'
-import AccessDenied from '@/components/AccessDenied'
+import Home from '../pages/Home'
+import PayingUser from '../pages/PayingUser'
+import FreeUser from '../pages/FreeUser'
+import AccessDenied from '../pages/AccessDenied'
 
 Vue.use(Router)
 
@@ -11,14 +11,14 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Home',
+      component: Home
     },
     {
       path: '/payinguser',
       name: 'PayingUser',
       component: PayingUser,
-      meta: {        
+      meta: {
         requiresAuth: true,
         role: ['PayingUser']
       }
@@ -27,7 +27,7 @@ export default new Router({
       path: '/freeuser',
       name: 'FreeUser',
       component: FreeUser,
-      meta: {        
+      meta: {
         requiresAuth: true,
         role: ['FreeUser']
       }

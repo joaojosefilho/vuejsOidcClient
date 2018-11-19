@@ -1,4 +1,5 @@
 <template>
+  <!--eslint-disable-->
   <div v-if="signedIn">
     <div id="app">
       <!--img src="./assets/logo.png"-->
@@ -8,30 +9,26 @@
 </template>
 
 <script>
-import Mgr from './services/SecurityService';
+/* eslint-disable */
+import Mgr from './services/SecurityService'
 
-export default {  
+export default {
   name: 'App',
-  data() {
+  data () {
     return {
       mgr: new Mgr(),
       signedIn: true
-    };    
+    }    
   },
-  mounted() {    
+  mounted () {
     this.mgr.getSignedIn().then(
       sucess => {
-        this.signedIn = sucess;
+        this.signedIn = sucess
       },
       err => {
-        console.log(err);
+        console.log(err)
       }
-    );    
+    )    
   }
 }
 </script>
-
-<style>
-  @import 'bootstrap/dist/css/bootstrap.css';
-  @import 'bootstrap-vue/dist/bootstrap-vue.css';
-</style>

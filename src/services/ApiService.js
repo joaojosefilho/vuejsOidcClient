@@ -1,5 +1,7 @@
+/* eslint-disable */
 import axios from 'axios'
-import Mgr from '@/services/SecurityService'
+import Mgr from './SecurityService'
+import 'babel-polyfill';
 
 const baseUrl = 'https://localhost:44390/api/';
 

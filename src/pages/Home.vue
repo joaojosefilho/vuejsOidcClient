@@ -1,4 +1,5 @@
 <template>
+<!--eslint-disable-->
 <div>
   <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#/">VueJs</a>    
@@ -103,107 +104,106 @@
 </template>
 
 <script>
-import Mgr from '@/services/SecurityService';
-import Api from '@/services/ApiService';
-export default {  
-  name: 'HelloWorld',
+/* eslint-disable */
+import Mgr from '../services/SecurityService'
+import Api from '../services/ApiService'
+export default {
+  name: 'Home',
   data () {
-    return {      
+    return {
       mgr: new Mgr(),
       api: new Api()
     }
   },
   methods: {
-    async getAll(api){      
-      let vm = this;
+    async getAll (api) {
+      let vm = this
       let result = await this.api.getAll(api)
       vm.logApi(result)
     },
-     token(){
-      let vm = this;
+    token () {
+      let vm = this
       this.mgr.getToken().then(
-      sucess => {
-        vm.logToken(sucess)
-      },
-      err => {
-        console.log(err);
-      });
+        sucess => {
+          vm.logToken(sucess)
+        },
+        err => {
+          console.log(err)
+      })
     },
-    tokenIdToken(){
-      let vm = this;
+    tokenIdToken () {
+      let vm = this
       this.mgr.getIdToken().then(
-      sucess => {
-        vm.logToken(sucess)
-      },
-      err => {
-        console.log(err);
-      });
+        sucess => {
+          vm.logToken(sucess)
+        },
+        err => {
+          console.log(err)
+      })
     },
-    tokenSessionState(){
-      let vm = this;
+    tokenSessionState () {
+      let vm = this
       this.mgr.getSessionState().then(
-      sucess => {
-        vm.logToken(sucess)
-      },
-      err => {
-        console.log(err);
-      });
+        sucess => {
+          vm.logToken(sucess)
+        },
+        err => {
+          console.log(err)
+      })
     },
-    tokenAccessToken(){
-      let vm = this;
+    tokenAccessToken () {
+      let vm = this
       this.mgr.getAcessToken().then(
-      sucess => {
-        vm.logToken(sucess)
-      },
-      err => {
-        console.log(err);
-      });
+        sucess => {
+          vm.logToken(sucess)
+        },
+        err => {
+          console.log(err)
+      })
     },
-    tokenScopes(){
-      let vm = this;
+    tokenScopes () {
+      let vm = this
       this.mgr.getScopes().then(
-      sucess => {
-        vm.logToken(sucess)
-      },
-      err => {
-        console.log(err);
-      });
+        sucess => {
+          vm.logToken(sucess)
+        },
+        err => {
+          console.log(err)
+      })
     },
-    tokenProfile(){
-      let vm = this;
+    tokenProfile () {
+      let vm = this
       this.mgr.getProfile().then(
-      sucess => {
-        vm.logToken(sucess)
-      },
-      err => {
-        console.log(err);
-      }); 
+        sucess => {
+          vm.logToken(sucess)
+        },
+        err => {
+          console.log(err)
+      }) 
     },
-    logApi(){
-      document.getElementById('resultsApi').innerText = '';
+    logApi () {
+      document.getElementById('resultsApi').innerText = ''
 
       Array.prototype.forEach.call(arguments, function (msg) {
         if (msg instanceof Error) {
-            msg = "Error: " + msg.message;
+          msg = 'Error: ' + msg.message
+        } else if (typeof msg !== 'string') {
+          msg = JSON.stringify(msg, null, 2)
         }
-        else if (typeof msg !== 'string') {
-            msg = JSON.stringify(msg, null, 2);
-        }
-        document.getElementById('resultsApi').innerHTML += msg + '\r\n';
-      });
+        document.getElementById('resultsApi').innerHTML += msg + '\r\n'
+      })
     },
-    logToken(){      
-      document.getElementById('resultsToken').innerText = '';
+    logToken () {
+      document.getElementById('resultsToken').innerText = ''
 
       Array.prototype.forEach.call(arguments, function (msg) {
         if (msg instanceof Error) {
-            msg = "Error: " + msg.message;
+          msg = 'Error: ' + msg.message
+        } else if (typeof msg !== 'string') {
+          msg = JSON.stringify(msg, null, 2)
         }
-        else if (typeof msg !== 'string') {
-            msg = JSON.stringify(msg, null, 2);
-        }
-        document.getElementById('resultsToken').innerHTML += msg + '\r\n';
-      });
+        document.getElementById('resultsToken').innerHTML += msg + '\r\n'
+      })
 
     }
   }
