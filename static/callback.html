@@ -11,8 +11,6 @@
   <script>
 
     var mgr = new Oidc.UserManager({userStore: new Oidc.WebStorageStateStore(), loadUserInfo: true, filterProtocolClaims: true});
-
-    console.log("Callback:" + mgr)
     
     mgr.signinRedirectCallback().then(function (user) {
       window.location.href = '../';

@@ -5,11 +5,11 @@ var mgr = new Oidc.UserManager({
   userStore: new Oidc.WebStorageStateStore(),  
   authority: 'https://localhost:44321',
   client_id: 'vuejsclient',
-  redirect_uri: 'http://localhost:8080/static/callback.html',
+  redirect_uri: window.location.origin + '/static/callback.html',
   response_type: 'id_token token',
   scope: 'openid profile address roles identityserver4api country subscriptionlevel offline_access',
-  post_logout_redirect_uri: 'http://localhost:8080/index.html',
-  silent_redirect_uri: 'http://localhost:8080/static/silent-renew.html',
+  post_logout_redirect_uri: window.location.origin + '/index.html',
+  silent_redirect_uri: window.location.origin + '/static/silent-renew.html',
   accessTokenExpiringNotificationTime: 10,
   automaticSilentRenew: true,
   filterProtocolClaims: true,
@@ -44,8 +44,7 @@ mgr.events.addSilentRenewError(function () {
 
 mgr.events.addUserSignedOut(function () {
   alert('Going out!');
-  console.log('UserSignedOut：', arguments);
-  //mgr.removeUser();
+  console.log('UserSignedOut：', arguments);  
   mgr.signoutRedirect().then(function (resp) {
     console.log('signed out', resp);
   }).catch(function (err) {
@@ -54,10 +53,6 @@ mgr.events.addUserSignedOut(function () {
 });
 
 export default class SecurityService {  
-
-  constructor(){
-    console.log('Construtor')   
-  }
 
   getUser () {
     let self = this
@@ -75,6 +70,7 @@ export default class SecurityService {
       });
     })
   }
+
   getSignedIn () {
     let self = this
     return new Promise((resolve, reject) => {
@@ -91,11 +87,13 @@ export default class SecurityService {
       });
     })
   }
+
   signIn () {
     mgr.signinRedirect().catch(function (err) {
       console.log(err)
     })
   }
+  
   signOut () {
     var self = this;
     mgr.signoutRedirect().then(function (resp) {      

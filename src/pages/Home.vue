@@ -1,106 +1,106 @@
 <template>
-<!--eslint-disable-->
-<div>
-  <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#/">VueJs</a>    
-    <ul class="navbar-nav px-3">
-      <li class="nav-item text-nowrap">
-        <a class="nav-link" @click="mgr.signOut()">Sign out</a>
-      </li>
-    </ul>
-  </nav>
-  <div class="container-fluid">
-    <div class="row">
-      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-        <div class="sidebar-sticky">
-          <ul class="nav flex-column">
+  <!--eslint-disable-->
+  <div>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#/">VueJs</a>
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" @click="mgr.signOut()">Sign out</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span>Call API with Axios</span>
+                <a class="d-flex align-items-center text-muted">
+                  <span data-feather="plus-circle"></span>
+                </a>
+              </h6>
+              <li class="nav-item">
+                <a class="nav-link" @click="getAll('values')" href="#">
+                  GetAll
+                </a>
+              </li>
+            </ul>
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-              <span>Call API with Axios</span>
+              <span>Token Information</span>
               <a class="d-flex align-items-center text-muted">
                 <span data-feather="plus-circle"></span>
               </a>
             </h6>
-            <li class="nav-item">
-              <a class="nav-link" @click="getAll('values')" href="#">                
-                GetAll
+            <ul class="nav flex-column mb-2">
+              <li class="nav-item">
+                <a class="nav-link"  @click="token()" href="#">
+                  Token
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link"  @click="tokenProfile()" href="#">
+                  Token Profile
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link"  @click="tokenIdToken()" href="#">
+                  Id Token
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link"  @click="tokenSessionState()" href="#">
+                  Session State
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link"  @click="tokenAccessToken()" href="#">
+                  Access Token
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link"  @click="tokenScopes()" href="#">
+                  Scopes
+                </a>
+              </li>
+            </ul>
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>Router Protection</span>
+              <a class="d-flex align-items-center text-muted">
+                <span data-feather="plus-circle"></span>
               </a>
-            </li>            
-          </ul>
-          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-            <span>Token Information</span>
-            <a class="d-flex align-items-center text-muted">
-              <span data-feather="plus-circle"></span>
-            </a>
-          </h6>
-          <ul class="nav flex-column mb-2">
-            <li class="nav-item">
-              <a class="nav-link"  @click="token()" href="#">                
-                Token
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link"  @click="tokenProfile()" href="#">                
-                Token Profile
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link"  @click="tokenIdToken()" href="#">                
-                Id Token
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link"  @click="tokenSessionState()" href="#">                
-                Session State
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link"  @click="tokenAccessToken()" href="#">                
-                Access Token
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link"  @click="tokenScopes()" href="#">                
-                Scopes
-              </a>
-            </li>
-          </ul>
-           <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-            <span>Router Protection</span>
-            <a class="d-flex align-items-center text-muted">
-              <span data-feather="plus-circle"></span>
-            </a>
-          </h6>
-          <ul class="nav flex-column mb-2">
-            <li class="nav-item">
-              <a class="nav-link" href="#/payinguser">
-                PayingUser
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#/freeuser">
-                FreeUser
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
-      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">API</h1>            
+            </h6>
+            <ul class="nav flex-column mb-2">
+              <li class="nav-item">
+                <a class="nav-link" href="#/payinguser">
+                  PayingUser
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#/freeuser">
+                  FreeUser
+                </a>
+              </li>
+            </ul>
           </div>
-          <pre id="resultsApi"></pre>
+        </nav>
 
-          </br>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <h1 class="h2">API</h1>
+            </div>
+            <pre id="resultsApi"></pre>
 
-          <h2>Information of Token</h2>
-          <div class="table-responsive">
-            <pre id="resultsToken"></pre>
-          </div>
-        </main>       
-    </div>    
+            <br>
+
+            <h2>Information of Token</h2>
+            <div class="table-responsive">
+              <pre id="resultsToken"></pre>
+            </div>
+          </main>
+      </div>
+    </div>
   </div>
-</div>  
 </template>
 
 <script>
@@ -116,12 +116,12 @@ export default {
     }
   },
   methods: {
-    async getAll (api) {
+    async getAll(api){
       let vm = this
       let result = await this.api.getAll(api)
       vm.logApi(result)
     },
-    token () {
+    token(){
       let vm = this
       this.mgr.getToken().then(
         sucess => {
@@ -131,7 +131,7 @@ export default {
           console.log(err)
       })
     },
-    tokenIdToken () {
+    tokenIdToken(){
       let vm = this
       this.mgr.getIdToken().then(
         sucess => {
@@ -141,7 +141,7 @@ export default {
           console.log(err)
       })
     },
-    tokenSessionState () {
+    tokenSessionState(){
       let vm = this
       this.mgr.getSessionState().then(
         sucess => {
@@ -151,7 +151,7 @@ export default {
           console.log(err)
       })
     },
-    tokenAccessToken () {
+    tokenAccessToken(){
       let vm = this
       this.mgr.getAcessToken().then(
         sucess => {
@@ -161,7 +161,7 @@ export default {
           console.log(err)
       })
     },
-    tokenScopes () {
+    tokenScopes(){
       let vm = this
       this.mgr.getScopes().then(
         sucess => {
@@ -171,7 +171,7 @@ export default {
           console.log(err)
       })
     },
-    tokenProfile () {
+    tokenProfile(){
       let vm = this
       this.mgr.getProfile().then(
         sucess => {
@@ -181,7 +181,7 @@ export default {
           console.log(err)
       }) 
     },
-    logApi () {
+    logApi(){
       document.getElementById('resultsApi').innerText = ''
 
       Array.prototype.forEach.call(arguments, function (msg) {
@@ -193,7 +193,7 @@ export default {
         document.getElementById('resultsApi').innerHTML += msg + '\r\n'
       })
     },
-    logToken () {
+    logToken(){
       document.getElementById('resultsToken').innerText = ''
 
       Array.prototype.forEach.call(arguments, function (msg) {
@@ -225,7 +225,6 @@ export default {
 /*
  * Sidebar
  */
-
 .sidebar {
   position: fixed;
   top: 0;
@@ -279,7 +278,6 @@ export default {
 /*
  * Content
  */
-
 [role="main"] {
   padding-top: 48px; /* Space for fixed navbar */
 }
@@ -287,7 +285,6 @@ export default {
 /*
  * Navbar
  */
-
 .navbar-brand {
   padding-top: .75rem;
   padding-bottom: .75rem;
@@ -316,7 +313,6 @@ export default {
 /*
  * Utilities
  */
-
 .border-top { border-top: 1px solid #e5e5e5; }
 .border-bottom { border-bottom: 1px solid #e5e5e5; }
 </style>

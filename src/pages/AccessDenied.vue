@@ -9,13 +9,12 @@
         </li>
       </ul>
     </nav>
-    </br></br></br></br>
+    <br><br><br><br>
     <div class="container">
       <div class="row">
         <div class="col-sm" align="center" >
           <span style="font-size:30px">Access Denied</span>
-          
-          </br>
+          <br>
           <span style="font-size:15px">Click</span>
           <a style="font-size:15px" href="#/">Hear</a>
           <span style="font-size:15px">Return to home page</span>

@@ -1,11 +1,10 @@
 /* eslint-disable */
 import Vue from 'vue'
+import VueRouter from 'vue-router';
 import router from './router'
 import App from './App'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import 'assets/css/app.styl'
-import VueRouter from 'vue-router';
 import Mgr from './services/SecurityService';
 
 Vue.use(VueRouter);
