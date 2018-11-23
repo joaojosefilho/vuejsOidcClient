@@ -18,7 +18,7 @@ new Vue({
 
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-  if (requiresAuth) {      
+  if (requiresAuth) {
       mgr.getRole().then(
         sucess => {
           if (to.meta.role == sucess){

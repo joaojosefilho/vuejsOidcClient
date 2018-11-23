@@ -12,7 +12,10 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: Home
+      component: Home,
+      meta: {
+        requiresAuth: false
+      }
     },
     {
       path: '/payinguser',
@@ -35,7 +38,10 @@ export default new Router({
     {
       path: '/accessdenied',
       name: 'AccessDenied',
-      component: AccessDenied
+      component: AccessDenied,
+      meta: {
+        requiresAuth: false
+      }
     }
   ]
 })
