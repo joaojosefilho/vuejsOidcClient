@@ -93,7 +93,7 @@ async getAll(api){
 
 ## Route protection
 
-The script [index.js] is responsible for managing the application routes using the [vue router] [7]. Each route has a field called **meta**. **Meta** receives two parameters: **requiresAuth** and **role**.
+The script [index.js][8] is responsible for managing the application routes using the [vue router] [7]. Each route has a field called **meta**. **Meta** receives two parameters: **requiresAuth** and **role**.
 
 - **requiresAuth**[Bollean]: Responsible for protecting the route  
 - **role**[String]: Users with this role will be allowed to access the route
