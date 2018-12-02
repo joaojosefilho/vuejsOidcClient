@@ -1,5 +1,6 @@
 /* eslint-disable */
 import Oidc from 'oidc-client';
+import 'babel-polyfill';
 
 var mgr = new Oidc.UserManager({
   userStore: new Oidc.WebStorageStateStore(),  

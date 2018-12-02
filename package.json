@@ -13,6 +13,7 @@
   "author": "joaojosefilho <joaojosefilho10@hotmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@babel/polyfill": "^7.0.0",
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.1.3",
