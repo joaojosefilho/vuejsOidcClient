@@ -63,6 +63,11 @@
                   Scopes
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link"  @click="renewToken()" href="#">
+                  Force Access Token Renewal
+                </a>
+              </li>
             </ul>
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
               <span>Router Protection</span>
@@ -174,6 +179,16 @@ export default {
     tokenProfile(){
       let vm = this
       this.mgr.getProfile().then(
+        sucess => {
+          vm.logToken(sucess)
+        },
+        err => {
+          console.log(err)
+      }) 
+    },
+    renewToken(){
+      let vm = this
+      this.mgr.renewToken().then(
         sucess => {
           vm.logToken(sucess)
         },

@@ -52,7 +52,23 @@ mgr.events.addUserSignedOut(function () {
   })
 });
 
-export default class SecurityService {  
+export default class SecurityService {
+
+  renewToken () {
+    let self = this
+    return new Promise((resolve, reject) => {
+      mgr.signinSilent().then(function (user) {
+        if (user == null) {
+          self.signIn()
+        } else{
+          return resolve(user)
+        }
+      }).catch(function (err) {
+        console.log(err)
+        return reject(err)
+      });
+    })
+  }
 
   getUser () {
     let self = this
