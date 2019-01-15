@@ -10,10 +10,13 @@ https://nodejs.org/en/download/current/
 Npm Version Control on Windows:  
 https://github.com/felixrieseberg/npm-windows-upgrade
 
+Npm Version Control on Linux:  
+https://github.com/creationix/nvm
+
 ## Technology Version
 
-Version of npm used in the project: *6.4.1*  
-Version of oidc-client: *1.5.4*
+Version of npm used in the project: *6.5.0*  
+Version of oidc-client: *1.6.1*
 
 ## Identity Provider
 
