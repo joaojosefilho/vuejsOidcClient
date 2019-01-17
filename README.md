@@ -75,9 +75,9 @@ const baseUrl = 'https://localhost:44390/api/';
 The **defineHeaderAxios()** method appends the access teken to the axios head.
 ``` bash
 async defineHeaderAxios () {
-    await user.getUser().then(
-      sucess => {
-        axios.defaults.headers.common['Authorization'] = 'Bearer ' + sucess.access_token 
+    await user.getAcessToken().then(
+      acessToken => {
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + acessToken
       }, err => {
         console.log(err)
       })  
