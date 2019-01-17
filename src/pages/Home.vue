@@ -34,32 +34,32 @@
             </h6>
             <ul class="nav flex-column mb-2">
               <li class="nav-item">
-                <a class="nav-link"  @click="token()" href="#">
+                <a class="nav-link"  @click="getToken()" href="#">
                   Token
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link"  @click="tokenProfile()" href="#">
+                <a class="nav-link"  @click="getTokenProfile()" href="#">
                   Token Profile
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link"  @click="tokenIdToken()" href="#">
+                <a class="nav-link"  @click="getTokenId()" href="#">
                   Id Token
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link"  @click="tokenSessionState()" href="#">
+                <a class="nav-link"  @click="getTokenSessionState()" href="#">
                   Session State
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link"  @click="tokenAccessToken()" href="#">
+                <a class="nav-link"  @click="getAccessToken()" href="#">
                   Access Token
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link"  @click="tokenScopes()" href="#">
+                <a class="nav-link"  @click="getTokenScopes()" href="#">
                   Scopes
                 </a>
               </li>
@@ -122,75 +122,75 @@ export default {
   },
   methods: {
     async getAll(api){
-      let vm = this
+      let self = this
       let result = await this.api.getAll(api)
-      vm.logApi(result)
+      self.logApi(result)
     },
-    token(){
-      let vm = this
-      this.mgr.getToken().then(
-        sucess => {
-          vm.logToken(sucess)
+    getToken(){
+      let self = this
+      this.mgr.getUser().then(
+        token => {
+          self.logToken(token)
         },
         err => {
           console.log(err)
       })
     },
-    tokenIdToken(){
-      let vm = this
+    getTokenId(){
+      let self = this
       this.mgr.getIdToken().then(
-        sucess => {
-          vm.logToken(sucess)
+        tokenId => {
+          self.logToken(tokenId)
         },
         err => {
           console.log(err)
       })
     },
-    tokenSessionState(){
-      let vm = this
+    getTokenSessionState(){
+      let self = this
       this.mgr.getSessionState().then(
-        sucess => {
-          vm.logToken(sucess)
+        sessionState => {
+          self.logToken(sessionState)
         },
         err => {
           console.log(err)
       })
     },
-    tokenAccessToken(){
-      let vm = this
+    getAccessToken(){
+      let self = this
       this.mgr.getAcessToken().then(
-        sucess => {
-          vm.logToken(sucess)
+        acessToken => {
+          self.logToken(acessToken)
         },
         err => {
           console.log(err)
       })
     },
-    tokenScopes(){
-      let vm = this
+    getTokenScopes(){
+      let self = this
       this.mgr.getScopes().then(
-        sucess => {
-          vm.logToken(sucess)
+        scopes => {
+          self.logToken(scopes)
         },
         err => {
           console.log(err)
       })
     },
-    tokenProfile(){
-      let vm = this
+    getTokenProfile(){
+      let self = this
       this.mgr.getProfile().then(
-        sucess => {
-          vm.logToken(sucess)
+        tokenProfile => {
+          self.logToken(tokenProfile)
         },
         err => {
           console.log(err)
       }) 
     },
     renewToken(){
-      let vm = this
+      let self = this
       this.mgr.renewToken().then(
-        sucess => {
-          vm.logToken(sucess)
+        newToken => {
+          self.logToken(newToken)
         },
         err => {
           console.log(err)

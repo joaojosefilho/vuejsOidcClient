@@ -9,9 +9,9 @@ var user = new Mgr()
 export default class ApiService {
 
   async defineHeaderAxios () {
-    await user.getUser().then(
-      sucess => {
-        axios.defaults.headers.common['Authorization'] = 'Bearer ' + sucess.access_token 
+    await user.getAcessToken().then(
+      acessToken => {
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + acessToken
       }, err => {
         console.log(err)
       })  

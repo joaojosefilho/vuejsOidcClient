@@ -21,8 +21,8 @@ export default {
   },
   mounted () {
     this.mgr.getSignedIn().then(
-      sucess => {
-        this.signedIn = sucess
+      signIn => {
+        this.signedIn = signIn
       },
       err => {
         console.log(err)

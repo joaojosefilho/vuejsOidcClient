@@ -55,12 +55,13 @@ mgr.events.addUserSignedOut(function () {
 
 export default class SecurityService {
 
+  // Renew the token manually
   renewToken () {
     let self = this
     return new Promise((resolve, reject) => {
       mgr.signinSilent().then(function (user) {
         if (user == null) {
-          self.signIn()
+          self.signIn(null)
         } else{
           return resolve(user)
         }
@@ -71,6 +72,7 @@ export default class SecurityService {
     })
   }
 
+  // Get the user who is logged in
   getUser () {
     let self = this
     return new Promise((resolve, reject) => {
@@ -88,6 +90,7 @@ export default class SecurityService {
     })
   }
 
+  // Check if there is any user logged in
   getSignedIn () {
     let self = this
     return new Promise((resolve, reject) => {
@@ -95,7 +98,7 @@ export default class SecurityService {
         if (user == null) {
           self.signIn()
           return resolve(false)
-        } else{                    
+        } else{
           return resolve(true)
         }
       }).catch(function (err) {
@@ -105,45 +108,30 @@ export default class SecurityService {
     })
   }
 
+  // Redirect of the current window to the authorization endpoint.
   signIn () {
     mgr.signinRedirect().catch(function (err) {
       console.log(err)
     })
   }
   
-  signOut () {
-    var self = this;
-    mgr.signoutRedirect().then(function (resp) {      
+  // Redirect of the current window to the end session endpoint
+  signOut () {    
+    mgr.signoutRedirect().then(function (resp) {
       console.log('signed out', resp);
     }).catch(function (err) {
       console.log(err)
     })
   }
 
-  getToken () {
-    let self = this
-    return new Promise((resolve, reject) => {
-      mgr.getUser().then(function (user) {
-        if (user == null) {
-          self.signIn()
-          return resolve(false)
-        } else{          
-          return resolve(user)
-        }
-      }).catch(function (err) {
-        console.log(err)
-        return reject(err)
-      });
-    })
-  }
-
+  // Get the profile of the user logged in
   getProfile () {
     let self = this
     return new Promise((resolve, reject) => {
       mgr.getUser().then(function (user) {
         if (user == null) {
           self.signIn()
-          return resolve(false)
+          return resolve(null)
         } else{          
           return resolve(user.profile)
         }
@@ -154,13 +142,14 @@ export default class SecurityService {
     })
   }
 
+  // Get the token id
   getIdToken(){
     let self = this
     return new Promise((resolve, reject) => {
       mgr.getUser().then(function (user) {
         if (user == null) {
           self.signIn()
-          return resolve(false)
+          return resolve(null)
         } else{          
           return resolve(user.id_token)
         }
@@ -171,13 +160,14 @@ export default class SecurityService {
     })
   }
 
+  // Get the session state
   getSessionState(){
     let self = this
     return new Promise((resolve, reject) => {
       mgr.getUser().then(function (user) {
         if (user == null) {
           self.signIn()
-          return resolve(false)
+          return resolve(null)
         } else{          
           return resolve(user.session_state)
         }
@@ -188,13 +178,14 @@ export default class SecurityService {
     })
   }
 
+  // Get the access token of the logged in user
   getAcessToken(){
     let self = this
     return new Promise((resolve, reject) => {
       mgr.getUser().then(function (user) {
         if (user == null) {
           self.signIn()
-          return resolve(false)
+          return resolve(null)
         } else{          
           return resolve(user.access_token)
         }
@@ -205,13 +196,14 @@ export default class SecurityService {
     })
   }
 
+  // Takes the scopes of the logged in user
   getScopes(){
     let self = this
     return new Promise((resolve, reject) => {
       mgr.getUser().then(function (user) {
         if (user == null) {
           self.signIn()
-          return resolve(false)
+          return resolve(null)
         } else{          
           return resolve(user.scopes)
         }
@@ -222,13 +214,14 @@ export default class SecurityService {
     })
   }
 
+  // Get the user roles logged in
   getRole () {
     let self = this
     return new Promise((resolve, reject) => {
       mgr.getUser().then(function (user) {
         if (user == null) {
           self.signIn()
-          return resolve(false)
+          return resolve(null)
         } else{          
           return resolve(user.profile.role)
         }
