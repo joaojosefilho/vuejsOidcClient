@@ -5,7 +5,7 @@ Project vueJs with oidc-client library
 ## Create the development environment
 
 Npm:  
-https://nodejs.org/en/download/current/
+https://nodejs.org/en/download/
 
 Npm Version Control on Windows:  
 https://github.com/felixrieseberg/npm-windows-upgrade
